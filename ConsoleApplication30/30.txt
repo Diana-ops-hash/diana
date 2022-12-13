@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class City {
+public:
+	virtual string getName() { return "City "; }
+	virtual int getPopul() = 0;
+};
+class Moscow : public City {
+public:
+	string getName() override { return "Moscow"; }
+	int getPopul() override { return 12 655 050; }
+};
+class SPb : public City {
+public:
+	string getName() override { return "Saint-Petersburg"; }
+	int getPopul() override { return 5 388 759; }
+};
+
+class Country final {
+	string name;
+	int popul;
+public:
+	Country(string n, int p) {
+		if (n.length() > 0) name = n;
+		if (p > 0) popul = p;
+	}
+
+	string getName1() { return name; }
+	int getPopul1(){ return popul; }
+};
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	Moscow mos;
+	cout << "City: " << mos.getName() << "\nPopulation: " << mos.getPopul();
+
+	Ufa uf;
+	cout << "\n\nCity: " << uf.getName() << "\nPopulation: " << uf.getPopul();
+
+	Country ru("Russia", 146 748 590);
+	cout << "\n\nCountry: " << ru.getName1() << "\nPopulation: " << ru.getPopul1();
+}
